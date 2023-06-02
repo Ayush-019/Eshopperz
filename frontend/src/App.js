@@ -41,8 +41,6 @@ import UpdateUser from "./component/admin/UpdateUser";
 import ProductReviews from "./component/admin/ProductReviews";
 import NotFound from "./component/layout/Not Found/NotFound.js";
 
-
-
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -66,7 +64,6 @@ function App() {
 
   // Stops inspecting page
   window.addEventListener("contextmenu", (e) => e.preventDefault());
-
 
   return (
     <Router>
