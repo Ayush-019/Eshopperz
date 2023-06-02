@@ -1,8 +1,8 @@
-const app = require("./app");
+const app = require("./Backend/app");
 const port = process.env.PORT;
 const cloudinary = require("cloudinary");
 
-const connectDatabse = require("./Database/database");
+const connectDatabse = require("./Backend/Database/database");
 
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "Backend/.env" });
