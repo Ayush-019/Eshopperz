@@ -45,7 +45,7 @@ export const login = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOGIN_FAIL,
-      payload: error.response.data.message,
+      payload: error.response?.data?.message,
     });
   }
 };
@@ -65,7 +65,7 @@ export const register = (userdata) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: REGISTER_USER_FAIL,
-      payload: error.response.data.message,
+      payload: error.response?.data?.message,
     });
   }
 };
@@ -84,7 +84,7 @@ export const loadUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOAD_USER_FAIL,
-      payload: error.response.data.message,
+      payload: error.response?.data?.message,
     });
   }
 };
@@ -99,7 +99,7 @@ export const logout = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOGOUT_FAIL,
-      payload: error.response.data.message,
+      payload: error.response?.data?.message,
     });
   }
 };
@@ -118,7 +118,7 @@ export const getAllUsers = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: ALL_USERS_FAIL,
-      payload: error.response.data.message,
+      payload: error.response?.data?.message,
     });
   }
 };
@@ -137,7 +137,7 @@ export const userDetails = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: USER_DETAILS_FAIL,
-      payload: error.response.data.message,
+      payload: error.response?.data?.message,
     });
   }
 };
@@ -159,12 +159,10 @@ export const updateUser = (id, userData) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: UPDATE_USER_FAIL,
-      payload: error.response.data.message,
+      payload: error.response?.data?.message,
     });
   }
 };
-
-
 
 // Delete user --- >Admin
 export const deleteUser = (id) => async (dispatch) => {
@@ -180,7 +178,7 @@ export const deleteUser = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: DELETE_USER_FAIL,
-      payload: error.response.data.message,
+      payload: error.response?.data?.message,
     });
   }
 };

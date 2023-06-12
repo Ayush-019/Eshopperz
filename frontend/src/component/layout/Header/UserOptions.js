@@ -36,7 +36,7 @@ const UserOptions = ({ user }) => {
   ];
 
   //To add Dashboard at Top for admin.
-  if (user.role === "admin") {
+  if (user?.role === "admin") {
     options.unshift({
       icon: <DashboardIcon />,
       name: "Dashboard",

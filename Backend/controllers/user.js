@@ -159,40 +159,40 @@ exports.getUser = asyncErrors(async (req, res, next) => {
 
 //Update user Profile
 exports.updateUserProfile = asyncErrors(async (req, res, next) => {
-   const newUserData = {
-     name: req.body.name,
-     email: req.body.email,
-   };
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+  };
 
   //  if (req.body.avatar !== "") {
-   if (req.body.avatar) {
-     const user = await User.findById(req.user.id);
+  if (req.body.avatar) {
+    const user = await User.findById(req.user.id);
 
-     const imageId = user.avatar.public_id;
+    const imageId = user.avatar.public_id;
 
-     await cloudinary.v2.uploader.destroy(imageId);
+    await cloudinary.v2.uploader.destroy(imageId);
 
-     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-       folder: "avatars",
-       width: 150,
-       crop: "scale",
-     });
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      folder: "avatars",
+      width: 150,
+      crop: "scale",
+    });
 
-     newUserData.avatar = {
-       public_id: myCloud.public_id,
-       url: myCloud.secure_url,
-     };
-   }
+    newUserData.avatar = {
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    };
+  }
 
-   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
-     new: true,
-     runValidators: true,
-     useFindAndModify: false,
-   });
+  const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
 
-   res.status(200).json({
-     success: true,
-   });
+  res.status(200).json({
+    success: true,
+  });
 });
 
 //Update user Password
@@ -245,21 +245,21 @@ exports.getSingleUser = asyncErrors(async (req, res, next) => {
 
 //Update user role by admin --->Admin accessible only
 exports.updateUserRole = asyncErrors(async (req, res, next) => {
-    const newUserData = {
-      name: req.body.name,
-      email: req.body.email,
-      role: req.body.role,
-    };
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+    role: req.body.role,
+  };
 
-    await User.findByIdAndUpdate(req.params.id, newUserData, {
-      new: true,
-      runValidators: true,
-      useFindAndModify: false,
-    });
+  await User.findByIdAndUpdate(req.params.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
 
-    res.status(200).json({
-      success: true,
-    });
+  res.status(200).json({
+    success: true,
+  });
 });
 
 //Delete User --->Admin accessible only
