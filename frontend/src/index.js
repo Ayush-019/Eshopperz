@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
@@ -8,6 +9,7 @@ import store from "./store";
 
 import { positions, transitions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+axios.defaults.baseURL = "https://eshopperz-backend-new.vercel.app";
 
 const options = {
   timeout: 5000,
