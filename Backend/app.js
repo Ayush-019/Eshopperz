@@ -26,11 +26,11 @@ app.use("/api/v1", userRoute);
 app.use("/api/v1", orderRoute);
 app.use("/api/v1", paymentRoute);
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
-
 app.get("/", (req, res) => {
   res.json({ message: "Server is running" });
 });
+
+// app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 // app.get("*", (req, res) => {
 //   app.use(express.static(path.resolve(__dirname, "../frontend/build")));
