@@ -11,7 +11,12 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "Backend/.env" });
 }
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,12 +37,12 @@ app.get("/", (req, res) => {
   res.json({ message: "Server is running" });
 });
 
-// app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-// app.get("*", (req, res) => {
-//   app.use(express.static(path.resolve(__dirname, "../frontend/build")));
-//   res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
-// });
+app.get("*", (req, res) => {
+  app.use(express.static(path.resolve(__dirname, "../frontend/build")));
+  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
+});
 
 // MiddleWare for ErrorHandling
 app.use(ErrorMiddleWare);
