@@ -6,7 +6,7 @@ const User = require("../models/userModel");
 //To check if User is still authenticated
 exports.isAuthenticatedUser = asyncErrors(async (req, res, next) => {
   const { token } = req.cookies;
-
+  console.log("token", token);
   if (!token) {
     return next(new ErrorHandler("Please Login to access!", 401));
   }
@@ -21,8 +21,13 @@ exports.authorisedRoles = (...roles) => {
   //...roles is used because roles is an array
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
-      return next(new ErrorHandler(`Role: ${req.user.role} is not allowed to access it!!`,403));
+      return next(
+        new ErrorHandler(
+          `Role: ${req.user.role} is not allowed to access it!!`,
+          403
+        )
+      );
     }
-    next();   
+    next();
   };
 };

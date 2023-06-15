@@ -63,7 +63,7 @@ function App() {
   }, []);
 
   // Stops inspecting page
-  window.addEventListener("contextmenu", (e) => e.preventDefault());
+  // window.addEventListener("contextmenu", (e) => e.preventDefault());
 
   return (
     <Router>
@@ -164,7 +164,7 @@ function App() {
           component={ProductReviews}
         />
         {/* If any path not found in above Routes, it will give Not Found */}
-        {/* /process/payment is added bcoz this path is not switch component.So if not dound 
+        {/* /process/payment is added bcoz this path is not switch component.So if not found 
         render NotFound */}
         <Route
           component={
